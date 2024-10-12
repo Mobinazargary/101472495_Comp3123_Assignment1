@@ -6,7 +6,11 @@ const employeeRoutes = require('./routes/employeeRoutes');
 const mockRoutes = require("./routes/mockRoutes");
 require('dotenv').config();  // Load environment variables from .env file
 
+
+
 const app = express();
+
+app.use(express.static('public'));
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
