@@ -1,19 +1,50 @@
-# Employee Management API
+# COMP3123 Assignment 1: Employee Management System
 
-## Description
-This API allows for creating, reading, updating, and deleting employees.
+This is an Employee Management System built using **Node.js** and
+**Express**. It provides APIs for user signup, login, and CRUD operations
+on employees. The project is connected to MongoDB Atlas for database
+storage, with validation and error handling for secure and robust data
+management.
 
-## API Endpoints
-- `POST /user/signup` - Creates a new user
-- `POST /user/login` - Logs in a user
-- `GET /emp/employees` - Retrieves all employees
-- `POST /emp/employees` - Adds a new employee
-- `GET /emp/employees/:id` - Retrieves a specific employee by ID
-- `PUT /emp/employees/:id` - Updates an employee by ID
-- `DELETE /emp/employees` - Deletes an employee
+## Features
 
-## Setup
-1. Clone the repository.
-2. Install dependencies: `npm install`.
-3. Start the server: `npm start`.
+- User authentication (signup and login)
+- CRUD operations for managing employees
+- Validation and error handling for input data
+- RESTful API architecture
+- Hosted on Heroku (or other platform) with a live URL for deployment
+  testing
+
+---
+Sample user :
+"first_name": "Mobina",
+"last_name": "Zargary",
+"email": "Mobina.Zargary@gmail.com",
+"position": "Designer",
+"salary": 85000,
+"date_of_joining": "2023-08-10",
+"department": "Design",
+---
+
+}
+
+sample employee:
+
+{
+"username": "Mobina.Zargary",
+"email": "Mobina.Zargary@gmail.com",
+"password": "13812002"
+}
+## Technologies Used
+
+- **Node.js**
+- **Express.js**
+- **MongoDB Atlas** (database)
+- **Mongoose** (ODM)
+- **Express-Validator** (validation middleware)
+- **Bootstrap** (for frontend styling)
+- **Postman** (for API testing)
+- **Heroku** (for deployment)
+
+--
 
