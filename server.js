@@ -1,24 +1,28 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const userRoutes = require('./routes/userRoutes');  // Updated to match file name
+const userRoutes = require('./routes/userRoutes');
 const employeeRoutes = require('./routes/employeeRoutes');
 const mockRoutes = require("./routes/mockRoutes");
-
-const DB_URL = "mongodb+srv://admin:Mn%40590241@cluster0.yxkqj.mongodb.net/comp3123_assignment1?retryWrites=true&w=majority";
+require('dotenv').config();  // Load environment variables from .env file
 
 const app = express();
 
+// Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.json());
 
-// Connect to MongoDB Atlas
-mongoose.connect(DB_URL)
+// Connect to MongoDB Atlas using environment variable
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
     .then(() => {
         console.log("Successfully connected to the MongoDB Atlas database");
     })
     .catch(err => {
-        console.log("Could not connect to the database. Exiting now...", err);
+        console.error("Could not connect to the database. Exiting now...", err);
         process.exit();
     });
 
@@ -27,17 +31,13 @@ app.get('/', (req, res) => {
     res.send("<h1>Welcome</h1>");
 });
 
-// Middleware
-app.use(express.json());
-
-// Use Mock Routes
+// Use Routes
 app.use("/api/v1/mock", mockRoutes);
-
-// Routes
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/emp", employeeRoutes);
 
 // Start the server
-app.listen(3001, () => {
-    console.log("Server is listening on port 3001");
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
 });
