@@ -1,4 +1,4 @@
-# COMP3123 Assignment 1: Employee Management System
+# COMP3123 Assignment 1: Employee Management Syste
 
 This is an Employee Management System built using **Node.js** and
 **Express**. It provides APIs for user signup, login, and CRUD operations
